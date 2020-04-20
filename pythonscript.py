@@ -121,6 +121,20 @@ def plot_data(data):
 
     plt.show()
 
+def plot_measurements(angles):
+    # Plot individual measurements
+
+    plt.hlines(1, 1, 360)  # Draw a horizontal line
+    plt.xlim(0, 360)
+    plt.ylim(0.5, 1.5)
+
+    for m in angles:
+        y = np.ones(len(m))
+        plt.plot(m, y, '|', ms=50)
+
+    plt.xlabel("Vinkel [°]")
+    plt.axis('off')
+    plt.show()
 
 def main():
     sns.set_palette("husl")
@@ -148,7 +162,8 @@ def main():
             data[n].append(d)
 
     # Plot result
-    plot_data(data)
+    #plot_data(data)
+    plot_measurements(data)
 
     # Calculate average and std
     print("40 grader  - Gjennomsnitt = " + str(np.average(data[0])) + " Std. = " + str(np.std(data[0], ddof=1)))
